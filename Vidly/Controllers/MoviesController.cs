@@ -34,6 +34,9 @@ namespace Vidly.Controllers
             return Content(String.Format("pageIndex={0}&sortBy={1}", pageIndex, sortBy));
         }
 
+        // This is custom routes used by routes.MapMvcAttributeRoutes();
+        // Can use multiple contstraints separated by colon
+        [Route("movies/released/{year}/{month:regex(\\d{2}):range(1, 12)}")]
         public ActionResult ByReleaseDate(int year, int month)
         {
             return Content(year + "/" + month);
