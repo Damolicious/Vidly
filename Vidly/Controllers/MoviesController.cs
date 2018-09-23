@@ -14,7 +14,10 @@ namespace Vidly.Controllers
         {
             var movie = new Movie() { Name = "Shrek!" };
 
-            return View(movie);
+            // This is fragile because "Movie" is changed then the view (Random.cshtml) also has to change
+            ViewData["Movie"] = movie;
+
+            return View();
         }
 
         public ActionResult Edit(int id)
