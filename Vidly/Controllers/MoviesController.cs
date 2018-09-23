@@ -14,10 +14,13 @@ namespace Vidly.Controllers
         {
             var movie = new Movie() { Name = "Shrek!" };
 
-            // This is fragile because "Movie" is changed then the view (Random.cshtml) also has to change
-            ViewData["Movie"] = movie;
+            var viewResult = new ViewResult();
+            viewResult.ViewData.Model
+            // ViewData is a ViewDataDictionary, so can use key value pair or object Model
+            // return View does the assigning of movie to model automatically so do not need previous 2 lines
 
-            return View();
+            // movie object is assigned to the property Model
+            return View(movie);
         }
 
         public ActionResult Edit(int id)
